@@ -24,25 +24,25 @@ class SecurityApplicationTests {
 	@Autowired
 	var accessService: AccessService? = null
 
-//	@Test
-//	fun contextLoads() {
-//	}
-
 	@Test
-	fun getAllDetails() {
-		var data = User()
-
-		data.fullName = "user"
-		data.organization = "axis"
-		data.username = "user@gmail.com"
-		data.mobile = "9573631086"
-		data.isAdmin = false
-
-
-		Mockito.`when`(userRepository!!.findAll())
-			.thenReturn(listOf(data))
-		Assertions.assertEquals(1, accessService!!.getAllDetails().size);
+	fun contextLoads() {
 	}
+
+//	@Test
+//	fun getAllDetails() {
+//		var data = User()
+//
+//		data.fullName = "user"
+//		data.organization = "axis"
+//		data.username = "user@gmail.com"
+//		data.mobile = "9573631086"
+//		data.isAdmin = false
+//
+//
+//		Mockito.`when`(userRepository!!.findAll())
+//			.thenReturn(listOf(data))
+//		Assertions.assertEquals(1, accessService!!.getAllDetails().size);
+//	}
 
 
 
