@@ -159,7 +159,7 @@
 				</dependencies>
 			</plugin>
 		</plugins>
-		<finalName>Security</finalName>
+		<finalName>security</finalName>
 	</build>
 	<profiles>
 		<profile>
