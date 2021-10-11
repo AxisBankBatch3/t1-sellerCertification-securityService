@@ -65,7 +65,20 @@ class AuthRestAPIs {
             )
         )
     }
+    @GetMapping("/existbyemail/{emailId}")
+    fun isEmail(@PathVariable("emailId") emailId: String?): Boolean {
+        return accessService!!.existByUsername(emailId)!!
+    }
 
+    @GetMapping("/existByMobile/{mobile}")
+    fun isMobile(@PathVariable("mobile") mobile: String?): Boolean {
+        return accessService!!.existUserByMobileNumber(mobile)!!
+    }
+
+    @GetMapping("/findByMobile/{mobile}")
+    fun findUserByMobile(@PathVariable("mobile") mobile: String?): User? {
+        return accessService!!.findByMobile(mobile)
+    }
 
     @GetMapping("/policyholders")
     fun getallclients(): MutableList<User?> {
