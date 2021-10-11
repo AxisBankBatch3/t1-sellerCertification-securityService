@@ -37,6 +37,11 @@ class AuthRestAPIs {
     @Autowired
     var jwtProvider: JwtProvider? = null
 
+    @GetMapping("/")
+    fun welcomMsg():Int {
+        return 10
+    }
+
     @PostMapping("/signin")
     fun authenticateUser(@RequestBody loginRequest: @Valid LoginForm?): ResponseEntity<*>? {
         val authentication: Authentication = authenticationManager!!.authenticate(
@@ -61,29 +66,11 @@ class AuthRestAPIs {
         )
     }
 
-    /*
-	 * @PutMapping("/api/reset/{id}") public String
-	 * passwordReset(@PathVariable("id") String id,@RequestBody PasswordResetRequest
-	 * passwordResetRequest) throws Exception { return
-	 * accessService.resetPasswordById(id, passwordResetRequest); }
-	 */
-    @GetMapping("/existbyemail/{emailId}")
-    fun isEmail(@PathVariable("emailId") emailId: String?): Boolean {
-        return accessService!!.existByUsername(emailId)!!
-    }
 
-    @GetMapping("/existByMobile/{mobile}")
-    fun isMobile(@PathVariable("mobile") mobile: String?): Boolean {
-        return accessService!!.existUserByMobileNumber(mobile)!!
-    }
-
-    @GetMapping("/findByMobile/{mobile}")
-    fun findUserByMobile(@PathVariable("mobile") mobile: String?): User? {
-        return accessService!!.findByMobile(mobile)
-    }
     @GetMapping("/policyholders")
     fun getallclients(): MutableList<User?> {
         return accessService!!.getAllDetails();
     }
 
+    // Sign up route --> excel -
 }
