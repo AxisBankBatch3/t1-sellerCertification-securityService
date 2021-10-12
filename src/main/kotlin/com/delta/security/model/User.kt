@@ -4,12 +4,11 @@ import org.springframework.data.mongodb.core.mapping.Document
 import javax.persistence.Entity
 import javax.persistence.Id
 
-@Entity
 @Document(collection = "user")
 class User {
 
     @Id
-     var id: String? = null
+     var id: String? = ""
 
      var fullName: String? = null
 
