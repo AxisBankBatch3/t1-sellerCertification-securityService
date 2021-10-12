@@ -6,7 +6,9 @@ import com.delta.security.repository.UserRepository
 import com.delta.security.request.LoginForm
 import com.delta.security.response.JwtResponse
 import com.delta.security.service.AccessService
+import com.delta.security.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
@@ -29,6 +31,9 @@ class AuthRestAPIs {
     var userRepository: UserRepository? = null
 
     @Autowired
+    private lateinit var userService: UserService
+
+    @Autowired
     var accessService: AccessService? = null
 
     @Autowired
@@ -37,9 +42,9 @@ class AuthRestAPIs {
     @Autowired
     var jwtProvider: JwtProvider? = null
 
-    @GetMapping("/")
-    fun welcomMsg():Int {
-        return 10
+    @PostMapping("/")
+    fun welcomMsg() {
+        println("Welcome to services")
     }
 
     @PostMapping("/signin")
@@ -86,4 +91,13 @@ class AuthRestAPIs {
     }
 
     // Sign up route --> excel -
+    @PostMapping("/signupbulk")
+    fun addSellerBulk(@RequestBody sellerLst:List<User>){
+        userService.addSellers(sellerLst)
+    }
+
+    @PostMapping("/signupsingle")
+    fun addSellerSingle(@RequestBody seller:User):String{
+        return "seller added"
+    }
 }
